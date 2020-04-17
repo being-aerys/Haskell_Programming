@@ -1,7 +1,3 @@
-
-
-
-
 ----------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------Part 2: Graphs-------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -15,23 +11,23 @@ norm = sort . nub
 
 
 
-
+-- A simple way to represent a directed graph is through a list of edges. An edge is given by a pair of nodes. For simplicity, nodes are represented by integers.
 type Node = Int
 type Edge = (Node,Node)
 type Graph = [Edge]
 type Path = [Node]
 
-
-graph1 :: Graph
-graph1 = [(1,2),(1,3),(2,3),(2,4),(3,4)]
-graph2 :: Graph
-graph2 = [(1,2),(1,3),(2,1),(3,2),(4,4)]
+--Say we have the following graphs.
+g :: Graph
+g = [(1,2),(1,3),(2,3),(2,4),(3,4)]
+h :: Graph
+h = [(1,2),(1,3),(2,1),(3,2),(4,4)]
 
 
 --Define the function nodes :: Graph -> [Node] that computes the list of nodes contained in a given graph. For example, nodes g = [1,2,3,4].
 nodes :: Graph -> [Node]
 nodes [] = []
-nodes (x:xs) = norm ([fst x, snd x] ++ nodes xs)
+nodes (x:xs) = norm ([fst x, snd x] ++ nodes xs) --norm was given in the question.
 
 
 --Define the function suc :: Node -> Graph -> [Node] that computes the list of successors for a node in a given graph. For example, suc 2 g = [3,4], suc 4 g = [], 
