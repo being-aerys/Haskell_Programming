@@ -38,7 +38,7 @@ bag (x:xs) = ins x (bag xs)
 
 checker x []     = False
 checker x (y:ys) | x == y = True
-               | otherwise = checker x ys
+                 | otherwise = checker x ys
 
 subbag :: Eq a => Bag a -> Bag a -> Bool
 subbag xs [] = False
@@ -179,9 +179,9 @@ move (Circle p l) offs  = (Circle (addPt p offs) l)
 --Define a function alignLeft that transforms one figure into another one in which all shapes have the same minX coordinate but are otherwise unchanged.
 
 moveToX :: Number -> Shape -> Shape
-moveToX x_coord (Pt (x,y))             = (Pt (x_coord, y))
-moveToX x_coord (Circle (x,y) len)       = (Circle (x_coord + len,y) len)
-moveToX x_coord (Rect (x,y) len bred)     = (Rect (x_coord,y) len bred)
+moveToX x_coord (Pt (x,y)) = (Pt (x_coord, y))
+moveToX x_coord (Circle (x,y) len) = (Circle (x_coord + len,y) len)
+moveToX x_coord (Rect (x,y) len bred) = (Rect (x_coord,y) len bred)
 
 alignLeft :: Figure -> Figure
 alignLeft x = map (moveToX (minimum(map minX x))) x
@@ -194,7 +194,7 @@ alignLeft x = map (moveToX (minimum(map minX x))) x
 checking_line :: [Int] -> [Int] -> Bool
 checking_line [] [] = True
 checking_line (x:xs) (y:ys) | x <= y && checking_line xs ys = True
-                        | otherwise = False
+                            | otherwise = False
 
 checking_inside :: BBox -> BBox -> Bool
 checking_inside ((a,b),(c,d)) ((e,f),(g,h)) = (checking_line [e, f, c, d] [a, b, g, h])
